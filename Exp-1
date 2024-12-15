@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<string.h>
+
+// Define a structure to hold attendance details
+struct Attendance {
+    int rollNumber;
+    char name[50];
+    char status[10]; // "Present" or "Absent"
+};
+
+int main() {
+    struct Attendance records[50]; // Array to store multiple attendance records
+    int n, i;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    // Collect attendance details
+    for(i = 0; i < n; i++) {
+        printf("\nEnter details for student %d:\n", i + 1);
+        printf("Roll Number: ");
+        scanf("%d", &records[i].rollNumber);
+
+        printf("Name: ");
+        scanf(" %[^\n]s", records[i].name); // Read string with spaces
+
+        printf("Status (Present/Absent): ");
+        scanf(" %[^\n]s", records[i].status);
+    }
+
+    // Display the attendance records
+    printf("\n--- Attendance Records ---\n");
+    printf("Roll No.\tName\t\tStatus\n\n");
+    for(i = 0; i < n; i++) {
+        printf("%d\t\t%s\t\t%s\n", records[i].rollNumber, records[i].name, records[i].status);
+    }
+
+    return 0;
+}
